@@ -28,8 +28,8 @@ export default function Home() {
     setPrediction(prediction);
 
     while (
-      prediction.status !== "succeeded" &&
-      prediction.status !== "failed"
+      prediction.status !== "完成" &&
+      prediction.status !== "失败"
     ) {
       await sleep(1000);
       const response = await fetch("/api/predictions/" + prediction.id);
@@ -46,17 +46,16 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Replicate + Next.js</title>
+        <title>PeopleArt</title>
       </Head>
 
       <p>
-        Dream something with{" "}
-        <a href="https://replicate.com/stability-ai/stable-diffusion">stability-ai/stable-diffusion</a>:
+        人人都可以创作属于自己的“作品”:
       </p>
 
       <form className={styles.form} onSubmit={handleSubmit}>
-        <input type="text" name="prompt" placeholder="Enter a prompt to display an image" />
-        <button type="submit">Go!</button>
+        <input type="text" name="prompt" placeholder="请输入一段文字来描述你的创作" />
+        <button type="submit">生成!</button>
       </form>
 
       {error && <div>{error}</div>}
@@ -73,7 +72,7 @@ export default function Home() {
               />
               </div>
             )}  
-            <p>status: {prediction.status}</p>
+            <p>状态: {prediction.status}</p>
         </div>
       )}
     </div>
