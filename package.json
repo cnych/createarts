@@ -1,6 +1,7 @@
 {
   "name": "createarts",
   "version": "0.1.0",
+  "author": "jerry zhang<jerry.zhang.bill@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "next dev",
