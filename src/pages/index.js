@@ -17,9 +17,10 @@ export default function Home() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        prompt: e.target.prompt.value,
+        prompt: "mdjrny-v4 style "+ e.target.prompt.value,
       }),
     });
+    
     let prediction = await response.json();
     if (response.status !== 201) {
       setError(prediction.detail);
@@ -31,7 +32,7 @@ export default function Home() {
       prediction.status !== "完成" &&
       prediction.status !== "失败"
     ) {
-      await sleep(1000);
+      await sleep(100);
       const response = await fetch("/api/predictions/" + prediction.id);
       prediction = await response.json();
       if (response.status !== 200) {
