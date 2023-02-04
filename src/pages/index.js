@@ -29,10 +29,10 @@ export default function Home() {
     setPrediction(prediction);
 
     while (
-      prediction.status !== "完成" &&
-      prediction.status !== "失败"
+      prediction.status !== "succeeded" &&
+      prediction.status !== "failed"
     ) {
-      await sleep(100);
+      await sleep(200);
       const response = await fetch("/api/predictions/" + prediction.id);
       prediction = await response.json();
       if (response.status !== 200) {
